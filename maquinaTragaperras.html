@@ -5,14 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tragaperras</title>
     <script src="maquinaTragaperras.js"></script>
+    <style>
+        .contenedorPadre{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+        }
+        .contenedorTablaPrecios{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Tragaperras</h1>
-    <div id="dinero" class="dinero"></div>
-    <div id="maquina">
-        <div id="slot" class="slot"></div>
+    
+
+    <div class="contenedorTablaPrecios">
+        <h1>Tragaperras</h1>
+        <h2>Listado de precios</h2>
+        <table border="1">
+            <tr>
+                <th>Frutas</th>
+                <th>Precio</th>
+            </tr>
+            <tr>
+                <td>🍒🍒🍒</td>
+                <td>30€</td>
+            </tr>
+            <tr>
+                <td>7️⃣7️⃣7️⃣</td>
+                <td>50€</td>
+            </tr>
+            <tr>
+                <td>🍋🍋🍋</td>
+                <td>10€</td>
+            </tr>
+            <tr>
+                <td>🍊🍊🍊</td>
+                <td>10€</td>
+            </tr>
+            <tr>
+                <td>🍉🍉🍉</td>
+                <td>10€</td>
+            </tr>
+            <tr>
+                <td>🍇🍇🍇</td>
+                <td>10€</td>
+            </tr>
+            <tr>
+                <td>🍒🍒</td>
+                <td>5€</td>
+            </tr>
+            <tr>
+                <td>🍋🍋</td>
+                <td>5€</td>
+            </tr>
+            <tr>
+                <td>🍊🍊</td>
+                <td>5€</td>
+            </tr>
+        </table>
     </div>
-    <button id="boton" >Jugar</button>
+    
+    
+    <div class="contenedorPadre">
+
+        <div id="dinero" class="dinero"></div>
+            <div id="maquina">
+                <table border="1">
+                    <tr>
+                        <td><div id="slot" class="slot"></div></td>
+                    </tr>
+                </table>
+            </div>
+        <button id="boton" >Jugar</button>
+    </div>
+    
     
 </body>
 </html>
+
+
+
+
+

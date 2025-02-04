@@ -7,17 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const slot = document.getElementById("slot");
     const dinero = document.getElementById("dinero");
 
-   
     dinero.innerText = `Dinero: ${dinero2}€`;
 
     if (boton) {
         boton.addEventListener("click", function () {
-            
             dinero2--;
             dinero.innerText = `Dinero: ${dinero2}€`;
 
             const frutas = [];
-            slot.innerText = ''; 
+            slot.innerText = '';
 
             for (let i = 0; i < 3; i++) {
                 const fruta = tragaperras[Math.floor(Math.random() * tragaperras.length)];
@@ -26,13 +24,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
             slot.innerText = frutas.join(' ');
 
-       
+            let premio = 0;
+
+            // Premios para combinaciones exactas de 3 frutas iguales
             if (frutas.join('') === "🍒🍒🍒") {
-                dinero2 += 10; // Gana 10€
-                dinero.innerText = `Has ganado 10€! Dinero: ${dinero2}€`;
+                premio = 30;
+            } else if (frutas.join('') === "7️⃣7️⃣7️⃣") {
+                premio = 50;
+            } else if (["🍋🍋🍋", "🍊🍊🍊", "🍉🍉🍉", "🍇🍇🍇"].includes(frutas.join(''))) {
+                premio = 10;
+            } else {
+                // Comprobamos si hay dos frutas iguales en cualquier posición
+                const premiosPares = {
+                    "🍒": 5,
+                    "🍋": 5,
+                    "🍊": 5
+                };
+
+                let conteo = {};
+                frutas.forEach(f => conteo[f] = (conteo[f] || 0) + 1);
+
+                for (let fruta in conteo) {
+                    if (conteo[fruta] === 2 && premiosPares[fruta]) {
+                        premio += premiosPares[fruta];
+                    }
+                }
             }
 
- 
+            // Si hay premio, lo suma y lo muestra
+            if (premio > 0) {
+                console.log("entro");
+                dinero2 += premio;
+                dinero.innerText = `Has ganado ${premio}€! Dinero: ${dinero2}€`;
+            }
+
             if (dinero2 <= 0) {
                 boton.disabled = true;
                 dinero.innerText = `Sin dinero. Por favor, recarga para jugar de nuevo.`;
